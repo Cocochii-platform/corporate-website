@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記 - Cocochii</title>
+    <style>
+        /* ベースのスタイル */
+        :root {
+            --primary-color: #ff7eb3;
+            --secondary-color: #7fcdff;
+            --accent-color: #97e5a0;
+            --text-color: #4a4a4a;
+            --light-bg: #fff9f9;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --font-main: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* メインコンテンツ */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--text-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            padding: 1rem;
+            border: 1px solid var(--medium-gray);
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+            width: 30%;
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            transition: all 0.2s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* レスポンシブ調整 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            th, td {
+                padding: 0.8rem;
+            }
+            
+            th {
+                width: 35%;
+            }
+            
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <h1 class="logo-text">Cocochii</h1>
+    </header>
+    
+    <!-- メインコンテンツ -->
+    <div class="container">
+        <h1>特定商取引法に基づく表記</h1>
+        
+        <p>
+            本ウェブサイトは、株式会社Cocochii＆Co.が提供する「Cocochii」サービスに関する重要事項を記載しています。
+            特定商取引に関する法律（特定商取引法）に基づき、以下の通り表示いたします。
+        </p>
+        
+        <h2>事業者情報</h2>
+        <table>
+            <tr>
+                <th>販売事業者名</th>
+                <td>株式会社Cocochii＆Co.</td>
+            </tr>
+            <tr>
+                <th>代表者名</th>
+                <td>土居 明莉</td>
+            </tr>
+            <tr>
+                <th>所在地</th>
+                <td>〒150-0045 東京都渋谷区神泉町10番15号アネックス神泉301</td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td>03-XXXX-XXXX（平日10:00～18:00、土日祝日を除く）</td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td>info@cocochii.com</td>
+            </tr>
+            <tr>
+                <th>法人番号</th>
+                <td>3011001167519</td>
+            </tr>
+        </table>
+        
+        <h2>サービス内容</h2>
+        <p>
+            Cocochiiは「女子会のノリで運動できる、心地いい場所」をコンセプトに掲げるウェルネスコミュニティです。
+            オンラインサロンプラットフォーム「YOOR（ユア）」を通じて提供される会員制サービスとなります。
+        </p>
+        
+        <h2>料金</h2>
+        <table>
+            <tr>
+                <th>会員費</th>
+                <td>月額1,000円（税込1,100円）</td>
+            </tr>
+            <tr>
+                <th>支払方法</th>
+                <td>クレジットカード決済（VISA、MasterCard、American Express、JCB）</td>
+            </tr>
+            <tr>
+                <th>支払時期</th>
+                <td>
+                    クレジットカード決済の場合、登録日に初回決済が行われ、以降は毎月同日に自動更新・決済されます。<br>
+                    ※登録日が31日などの場合、翌月以降は各月の末日に決済されます。
+                </td>
+            </tr>
+        </table>
+        
+        <h2>サービス提供時期</h2>
+        <p>
+            会員登録完了後、直ちにサービスをご利用いただけます。イベント参加については各イベントの開催日時に準じます。
+        </p>
+        
+        <h2>返金・キャンセルポリシー</h2>
+        <p>
+            <strong>【会員費の返金について】</strong><br>
+            会員費は原則として返金いたしません。ただし、当社の責めに帰すべき事由により、1ヶ月間まったくサービスが提供されなかった場合には、当該月の会員費を返金いたします。
+        </p>
+        <p>
+            <strong>【イベント参加のキャンセルについて】</strong><br>
+            各イベントのキャンセルポリシーは、イベントごとに設定されます。イベント詳細ページにてご確認ください。一般的に、イベント開催日の3日前までのキャンセルは無料、それ以降のキャンセルについては参加費の返金はいたしかねます。
+        </p>
+        
+        <h2>契約の解除（退会）について</h2>
+        <p>
+            会員はいつでも退会（契約解除）することができます。退会手続きは、YOORプラットフォーム内のマイページから「退会手続き」ボタンをクリックして行うことができます。退会手続きが完了すると、次回更新日以降の会員費は発生せず、次回更新日をもって会員資格が失効します。
+        </p>
+        <p>
+            なお、退会手続きは更新日の前日までに行ってください。更新日当日に退会手続きを行った場合、翌月分の会員費が発生する場合があります。
+        </p>
+        
+        <h2>動作環境</h2>
+        <p>
+            本サービスのウェブサイトは、以下の環境でご利用いただけます。
+        </p>
+        <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+            <li>Windows: Google Chrome、Microsoft Edge、Firefox最新版</li>
+            <li>Mac: Safari、Google Chrome最新版</li>
+            <li>iOS: Safari最新版</li>
+            <li>Android: Google Chrome最新版</li>
+        </ul>
+        <p>
+            ※上記以外の環境では、一部機能が正常に動作しない場合があります。
+        </p>
+        
+        <h2>その他の注意事項</h2>
+        <p>
+            <strong>【禁止事項】</strong><br>
+            会員は、本サービスの利用にあたり、以下の行為を行ってはならないものとします。
+        </p>
+        <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+            <li>他の会員、第三者または当社の著作権、商標権等の知的財産権を侵害する行為</li>
+            <li>他の会員、第三者または当社の財産、プライバシーを侵害する行為</li>
+            <li>他の会員、第三者または当社に対する誹謗中傷</li>
+            <li>公序良俗に反する行為</li>
+            <li>営業、宣伝、広告、勧誘、その他営利を目的とする行為</li>
+            <li>その他、当社が不適切と判断する行為</li>
+        </ul>
+        
+        <p>
+            <strong>【健康上の注意】</strong><br>
+            本サービスで提供される運動プログラムは、一般的な健康状態の方を対象としています。持病をお持ちの方や妊娠中の方、その他健康上の不安がある方は、必ず医師にご相談の上、ご自身の責任においてご参加ください。
+        </p>
+    </div>
+    
+    <!-- フッター -->
+    <footer>
+        <div class="footer-nav">
+            <a href="index.html">ホーム</a>
+            <a href="terms.html">利用規約</a>
+            <a href="privacy-policy.html">プライバシーポリシー</a>
+            <a href="tokushoho.html">特定商取引法に基づく表記</a>
+        </div>
+        <p class="copyright">&copy; 2024 Cocochii＆Co. All rights reserved.</p>
+    </footer>
+</body>
+</html>

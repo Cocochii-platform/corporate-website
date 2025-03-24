@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocochii - 女子会のノリで運動できる、心地いい場所</title>
+    <style>
+        /* ベースのスタイル */
+        :root {
+            --primary-color: #ff7eb3;
+            --secondary-color: #7fcdff;
+            --accent-color: #97e5a0;
+            --text-color: #4a4a4a;
+            --light-bg: #fff9f9;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --font-main: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+        }
+        
+        p {
+            margin-bottom: 1.2em;
+            line-height: 1.8;
+        }
+        
+        p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 3.5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-container {
+            margin-bottom: 1.2rem;
+        }
+        
+        .logo-text {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.3rem;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            z-index: 1;
+            background: url('/api/placeholder/800/400') center/cover no-repeat;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #f8f8f8;
+        }
+        
+        /* ナビゲーション */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.7rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+        }
+        
+        .nav-links li {
+            margin: 0;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.7rem 0;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* メインコンテンツ */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section:nth-child(odd) {
+            background-color: white;
+        }
+        
+        .section:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        /* アバウトセクション */
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3.5rem;
+            margin-top: 1rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+        
+        .about-text p:first-of-type {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* 活動内容セクション */
+        .activities-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 1rem;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            width: 320px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .activity-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .activity-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+        }
+        
+        .activity-content {
+            padding: 1.8rem 1.8rem 2rem;
+        }
+        
+        .activity-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* 運営者セクション */
+        .founder-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 1.5rem;
+        }
+        
+        .founder-card {
+            text-align: center;
+            width: 300px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .founder-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border: 6px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .founder-card:hover .founder-image {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .founder-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .founder-title {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        /* 参加方法セクション */
+        .join-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .step-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 126, 179, 0.3);
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* 口コミセクション */
+        .testimonials-container {
+            max-width: 850px;
+            margin: 0 auto;
+            margin-top: 1.5rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem 2.5rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2.5rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .testimonial-card::before {
+            content: "\201D";
+            font-size: 6rem;
+            color: var(--primary-color);
+            opacity: 0.08;
+            position: absolute;
+            top: 5px;
+            left: 25px;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* コンタクトセクション */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 126, 179, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+        }
+        
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+        
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-link svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer-logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            transition: all 0.2s ease;
+            padding: 0.3rem 0;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            letter-spacing: 0.5px;
+        }
+        
+        /* レスポンシブ調整 */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2.8rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 3rem;
+            }
+            
+            .about-content, .contact-content {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+            
+            .about-text {
+                padding-right: 0;
+            }
+            
+            .about-image {
+                order: -1;
+                margin-bottom: 1rem;
+            }
+            
+            .activity-card, .step-card, .founder-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .testimonial-card {
+                padding: 2rem 1.8rem 1.8rem;
+            }
+            
+            .testimonial-card::before {
+                font-size: 5rem;
+                top: 0;
+                left: 15px;
+            }
+            
+            .contact-item {
+                margin-bottom: 1.8rem;
+            }
+            
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 1.5rem 2rem;
+                justify-content: center;
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1.2rem;
+            }
+            
+            .section {
+                padding: 3.5rem 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .founder-image {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+            }
+            
+            .testimonial-card {
+                padding: 1.8rem 1.5rem 1.5rem;
+            }
+            
+            .contact-icon {
+                width: 42px;
+                height: 42px;
+                margin-right: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <h1 class="logo-text">Cocochii</h1>
+            </div>
+            <p class="tagline">女子会のノリで運動できる、心地いい場所</p>
+        </div>
+    </header>
+    
+    <!-- ナビゲーション -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#activities">活動内容</a></li>
+                <li><a href="#founders">運営者</a></li>
+                <li><a href="#join">参加方法</a></li>
+                <li><a href="#testimonials">口コミ</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- アバウトセクション -->
+    <section class="section" id="about">
+        <h2 class="section-title">Cocochiiとは</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Cocochii（ココチ）は「女子会のノリで運動できる、心地いい場所」をコンセプトに掲げる日本最大級のウェルネスコミュニティです。</p>
+                <p>まるで女子会のような和やかで楽しい雰囲気の中で運動を楽しめる場を提供したいという思いから生まれました。コミュニティ名の「ここち（Cocochii）」は「心地いい」に由来し、参加者が安心して運動できる居心地の良い空間づくりを目指しています。</p>
+                <p>初心者から日頃運動している人まで、すべての参加者が肩肘張らずにフィットネスを楽しみ、心身の健康につなげることを理念としています。「運動を楽しみながら心も体も健康にするライフスタイルを広めたい」というビジョンのもと、20～30代の女性を中心にウェルネス文化の普及にも力を入れています。</p>
+            </div>
+            <div class="about-image">
+                <img src="https://yoor-jp.global.ssl.fastly.net/public/29762_a0b996e6592eaf1e31796a47b81d6e6f?crop=center&fit=crop&width=700&height=400" alt="Cocochiiの活動風景">
+            </div>
+        </div>
+    </section>
+    
+    <!-- 活動内容セクション -->
+    <section class="section" id="activities" style="background-color: white;">
+        <h2 class="section-title">活動内容</h2>
+        <div class="activities-container">
+            <div class="activity-card">
+                <div class="activity-image" style="background-image: url('./src/images/rannningu.jpg')"></div>
+                <div class="activity-content">
+                    <h3 class="activity-title">ランニング</h3>
+                    <p>初心者から経験者まで一緒に走る女子会ラン。東京の景色を楽しみながら、おしゃべりを交えて気軽に運動できます。マラソン完走を目指すプログラムなど、目標に向かって頑張りたい方もサポートします。</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-image" style="background-image: url('./src/images/piratexisu.jpg')"></div>
+                <div class="activity-content">
+                    <h3 class="activity-title">ヨガ・ピラティス</h3>
+                    <p>心と体のバランスを整えるヨガセッションや、体幹を鍛えるピラティス。朝活として開催されるイベントも人気で、一日の始まりを気持ちよく迎えられます。アーユルヴェーダとの組み合わせも好評です。</p>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-image" style="background-image: url('./src/images/kintore.jpg')"></div>
+                <div class="activity-content">
+                    <h3 class="activity-title">筋力トレーニング</h3>
+                    <p>女性のための適切な筋トレプログラムを提供。姿勢改善や代謝アップ、健康的な体づくりをサポートします。初心者でも取り組みやすい内容で、継続できる楽しさを重視しています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 運営者セクション -->
+    <section class="section" id="founders">
+        <h2 class="section-title">運営者</h2>
+        <div class="founder-container">
+            <div class="founder-card">
+                <div class="founder-image" style="background-image: url('./src/images/akari.jpg')"></div>
+                <h3 class="founder-name">土居 明莉</h3>
+                <p class="founder-title">共同創設者 / AKARI</p>
+                <p>東京大学在学中の2019年にミス東大コンテストのファイナリストに選出された経歴を持ち、「筋トレ女子」としてSNS上で情報発信を行っています。大学時代はジャズダンスサークルに所属し、卒業後はNewsPicksの番組『HORIE ONE』に約2年半アシスタントMCとして出演するなどメディアでも活躍。</p>
+            </div>
+            
+            <div class="founder-card">
+                <div class="founder-image" style="background-image: url('./src/images/yurika.jpg')"></div>
+                <h3 class="founder-name">YURIKA</h3>
+                <p class="founder-title">共同創設者</p>
+                <p>フィットネスをライフワークとするインフルエンサー。SNSを通じて健康的なライフスタイルの魅力を発信し、多くのフォロワーから支持を得ています。「忙しい女性の日常に運動を取り入れるメリット」を伝えることに力を入れ、東京マラソン財団のインタビュー企画にも登場。</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 参加方法セクション -->
+    <section class="section" id="join" style="background-color: white;">
+        <h2 class="section-title">参加方法</h2>
+        <div class="join-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">メンバー登録</h3>
+                <p>オンラインサロンプラットフォーム「YOOR（ユア）」を通じてメンバー登録をします。月額約1,000円で、各種イベント情報にアクセスできるようになります。</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">イベント情報をチェック</h3>
+                <p>コミュニティ内の連絡網やSNSグループで、ランニング、ヨガ、筋トレなど多彩なイベント情報をチェック。自分の興味や予定に合わせて参加するイベントを選びましょう。</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">イベントに参加</h3>
+                <p>初めての方でも安心して参加できるアットホームな雰囲気です。運動レベルは人それぞれ、自分のペースで楽しむことを大切にしています。イベント後は参加者同士で交流することも。</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 口コミセクション -->
+    <section class="section" id="testimonials">
+        <h2 class="section-title">参加者の声</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">コミュニティが素敵すぎて感動しました！女子会ランに参加して、コミュニティが素敵すぎて感動しました。一緒に盛り上げてくれたスタッフの方々、本当にありがとう！参加者のみんなも明るくて、とても楽しい時間を過ごせました。</p>
+                <p class="testimonial-author">- 30代 会社員</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">Cocochiiに参加してから週末の運動が楽しみになりました。最初は不安だったけれど、みんなが励ましてくれるので運動嫌いの自分でも続けられています。女子会感覚で運動できるのが本当に嬉しいです。</p>
+                <p class="testimonial-author">- 20代 大学生</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">社会人になってから新しい友達を作るのは難しかったけれど、ここで出会った仲間とは共通の趣味（フィットネス）を通じてすぐに仲良くなれました。イベント以外でも一緒にランチに行く仲です。ここなら気軽に継続できます！</p>
+                <p class="testimonial-author">- 20代 会社員</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- コンタクトセクション -->
+    <section class="section" id="contact" style="background-color: white;">
+        <h2 class="section-title">お問い合わせ</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>メール</h3>
+                        <p>info@cocochii.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-10c-4.2 0-8 3.22-8 8.2 0 3.32 2.67 7.25 8 11.8 5.33-4.55 8-8.48 8-11.8C20 5.22 16.2 2 12 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>活動拠点</h3>
+                        <p>東京都内（イベントにより異なります）</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3>活動時間</h3>
+                        <p>主に早朝・週末（イベントにより異なります）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- サブスクリプション詳細セクション -->
+    <section class="section" id="subscription">
+        <h2 class="section-title">サブスクリプション詳細</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p>
+                Cocochiiは月額制のサブスクリプションサービスです。以下に重要な情報をまとめています。
+            </p>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.3rem; color: var(--primary-color);">料金プラン</h3>
+            <p>
+                <strong>月額1,000円（税込1,100円）</strong><br>
+                オンラインサロンプラットフォーム「YOOR（ユア）」を通じてご登録いただけます。
+            </p>
+            
+            <h3 style="margin-top: 1.5rem; font-size: 1.3rem; color: var(--primary-color);">お支払い方法</h3>
+            <p>
+                クレジットカード決済（VISA、MasterCard、American Express、JCB）<br>
+                登録日に初回決済が行われ、以降は毎月同日に自動更新・決済されます。
+            </p>
+            
+            <h3 style="margin-top: 1.5rem; font-size: 1.3rem; color: var(--primary-color);">解約方法</h3>
+            <p>
+                会員はいつでも退会（契約解除）することができます。退会手続きは、YOORプラットフォーム内のマイページから「退会手続き」ボタンをクリックして行うことができます。<br>
+                退会手続きが完了すると、次回更新日以降の会員費は発生せず、次回更新日をもって会員資格が失効します。<br>
+                <strong>※退会手続きは更新日の前日までに行ってください。更新日当日に退会手続きを行った場合、翌月分の会員費が発生する場合があります。</strong>
+            </p>
+            
+            <h3 style="margin-top: 1.5rem; font-size: 1.3rem; color: var(--primary-color);">返金ポリシー</h3>
+            <p>
+                会員費は原則として返金いたしません。ただし、当社の責めに帰すべき事由により、1ヶ月間まったくサービスが提供されなかった場合には、当該月の会員費を返金いたします。<br>
+                詳細は<a href="terms.html" style="color: var(--primary-color); text-decoration: underline;">利用規約</a>をご確認ください。
+            </p>
+            
+            <h3 style="margin-top: 1.5rem; font-size: 1.3rem; color: var(--primary-color);">セキュリティについて</h3>
+            <p>
+                当サイトではSSL暗号化通信を採用し、お客様の情報を保護しています。<br>
+                クレジットカード情報については、当社では保持せず、決済代行会社（Stripe）を通じて安全に処理されます。<br>
+                個人情報の取り扱いについては<a href="privacy-policy.html" style="color: var(--primary-color); text-decoration: underline;">プライバシーポリシー</a>をご確認ください。
+            </p>
+        </div>
+    </section>
+        
+    <!-- フッター -->
+    <footer>
+        <div class="footer-nav" style="display: flex; justify-content: center; gap: 2rem; margin: 0 0 1.5rem;">
+            <a href="index.html">ホーム</a>
+            <a href="terms.html">利用規約</a>
+            <a href="privacy-policy.html">プライバシーポリシー</a>
+            <a href="tokushoho.html">特定商取引法に基づく表記</a>
+        </div>
+        <p class="copyright">&copy; 2024 Cocochii＆Co. All rights reserved.</p>
+    </footer>
+</body>
+</html>
